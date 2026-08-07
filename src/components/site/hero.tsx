@@ -59,7 +59,7 @@ export function Hero() {
             Pizza. Malang. 24 Jam.
           </p>
           <motion.div
-            animate={reduce ? undefined : { y: [0, 8, 0] }}
+            animate={reduce ? { y: 0 } : { y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="text-primary"
             aria-hidden
