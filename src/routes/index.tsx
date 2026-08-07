@@ -59,6 +59,8 @@ function Index() {
 
   return (
     <div className="bg-background">
+      <Loader />
+      <Cursor />
       <Nav />
       <main>
         <Hero />

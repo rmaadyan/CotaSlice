@@ -167,42 +167,47 @@ export function Contact() {
         Kesini Aja.
       </motion.h2>
 
-      <motion.dl {...reveal} className="mt-12 grid gap-6 font-mono text-sm sm:grid-cols-2">
-        {[
-          ["Alamat", "Jl. Brigjend Slamet Riadi No.19a, Malang"],
-          ["Telepon", "0822-2659-3355"],
-          ["Web", "cotaslice.id"],
-          ["Jam Buka", "Open 24 Jam"],
-        ].map(([k, v]) => (
-          <div key={k} className="border-t border-border pt-4">
-            <dt className="text-xs uppercase tracking-[0.2em] text-primary">{k}</dt>
-            <dd className="mt-2 text-foreground">{v}</dd>
-          </div>
-        ))}
-      </motion.dl>
+      <motion.div {...reveal} className="mt-10 h-[2px] w-full bg-primary" aria-hidden />
 
-      <motion.div {...reveal} className="mt-12 flex flex-wrap gap-4">
-        <motion.a
-          href="https://wa.me/c/6282226593355"
-          target="_blank"
-          rel="noreferrer"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-          className="border border-primary px-8 py-4 text-sm uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-        >
-          Lihat Menu WhatsApp
-        </motion.a>
-        <motion.a
-          href="https://cotaslice.id"
-          target="_blank"
-          rel="noreferrer"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.2 }}
-          className="border border-primary px-8 py-4 text-sm uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-        >
-          Kunjungi Website
-        </motion.a>
-      </motion.div>
+      <div className="mt-12 grid gap-12 md:grid-cols-2">
+        <motion.dl {...reveal} className="grid gap-6 font-mono text-sm sm:grid-cols-2">
+          {[
+            ["Alamat", "Jl. Brigjend Slamet Riadi No.19a, Malang"],
+            ["Telepon", "0822-2659-3355"],
+            ["Web", "cotaslice.id"],
+            ["Jam Buka", "Open 24 Jam"],
+          ].map(([k, v]) => (
+            <div key={k} className="border-t border-border pt-4">
+              <dt className="text-xs uppercase tracking-[0.2em] text-primary">{k}</dt>
+              <dd className="mt-2 text-foreground">{v}</dd>
+            </div>
+          ))}
+        </motion.dl>
+
+        <motion.div {...reveal} className="flex flex-col gap-4 md:items-end">
+          <motion.a
+            href="https://wa.me/c/6282226593355"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.25 }}
+            className="display border border-primary px-10 py-4 text-center text-xl tracking-[0.2em] text-primary transition-colors duration-[250ms] hover:bg-primary hover:text-primary-foreground"
+          >
+            Lihat Menu WhatsApp
+          </motion.a>
+          <motion.a
+            href="https://cotaslice.id"
+            target="_blank"
+            rel="noreferrer"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.25 }}
+            className="display border border-primary px-10 py-4 text-center text-xl tracking-[0.2em] text-primary transition-colors duration-[250ms] hover:bg-primary hover:text-primary-foreground"
+          >
+            Kunjungi Website
+          </motion.a>
+        </motion.div>
+      </div>
+
     </section>
   );
 }
