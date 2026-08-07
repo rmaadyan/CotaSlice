@@ -8,15 +8,22 @@ const reveal = {
   transition: { duration: 0.6 },
 } as const;
 
+const STATS = [
+  ["4.7★", "Google Rating"],
+  ["2.416", "Ulasan"],
+  ["24 Jam", "Selalu Buka"],
+];
+
 export function About() {
   return (
     <section id="about" className="mx-auto max-w-[1400px] px-5 py-24 md:px-10 md:py-32">
       <div className="grid items-center gap-12 md:grid-cols-2">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="relative"
         >
           <img
             src={aboutImg}
@@ -26,14 +33,19 @@ export function About() {
             loading="lazy"
             className="w-full object-cover"
           />
+          <span
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-primary opacity-[0.08]"
+          />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
+          <span className="mb-6 block h-[60px] w-[3px] bg-primary" aria-hidden />
           <h2 className="display text-6xl text-foreground md:text-[5.5vw]">
             Pizza Tipis.
             <br />
@@ -52,6 +64,17 @@ export function About() {
               Jl. Brigjend Slamet Riadi No.19a, Malang
             </span>
           </div>
+
+          <dl className="mt-8 flex divide-x divide-border border-t border-border pt-6">
+            {STATS.map(([value, label]) => (
+              <div key={label} className="flex-1 px-4 first:pl-0">
+                <dt className="display text-3xl text-foreground md:text-4xl">{value}</dt>
+                <dd className="mt-2 text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  {label}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </motion.div>
       </div>
     </section>
@@ -86,26 +109,38 @@ const initials = (n: string) =>
 
 export function Reviews() {
   return (
-    <section id="reviews" className="bg-cream py-24 text-ink md:py-32">
+    <section id="reviews" className="overflow-hidden bg-cream py-24 text-ink md:py-32">
       <div className="mx-auto max-w-[1400px] px-5 md:px-10">
-        <h2 className="display text-[16vw] leading-[0.8] md:text-[8vw]">Kata Mereka</h2>
+        <div className="relative">
+          <span
+            aria-hidden
+            className="display pointer-events-none absolute -top-[6vw] left-0 text-[20vw] leading-none opacity-[0.04] select-none"
+          >
+            Reviews
+          </span>
+          <h2 className="display relative text-[16vw] leading-[0.8] md:text-[8vw]">
+            Kata Mereka
+          </h2>
+        </div>
         <motion.div
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+          variants={{ show: { transition: { staggerChildren: 0.1 } } }}
           className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
         >
-          {REVIEWS.map((r) => (
+          {REVIEWS.map((r, i) => (
             <motion.figure
               key={r.name}
               variants={{
-                hidden: { opacity: 0, y: 40 },
+                hidden: { opacity: 0, y: 30 },
                 show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
               }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0,0,0,0.12)" }}
               transition={{ duration: 0.2 }}
-              className="border-t-[3px] border-primary bg-background/0 bg-white p-6"
+              className={`border-l-4 border-primary bg-white p-6 ${
+                i % 2 === 1 ? "lg:translate-y-5" : ""
+              }`}
             >
               <div className="font-mono text-xs text-primary">★★★★★</div>
               <blockquote className="mt-4 text-sm leading-relaxed">{r.text}</blockquote>

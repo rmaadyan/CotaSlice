@@ -90,7 +90,7 @@ export function MenuSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
-        variants={{ show: { transition: { staggerChildren: 0.08 } } }}
+        variants={{ show: { transition: { staggerChildren: 0.1 } } }}
         className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3"
       >
         {MENU.map((cat) => {
