@@ -3,6 +3,8 @@ import { Nav } from "@/components/site/nav";
 import { Hero, Ticker } from "@/components/site/hero";
 import { MenuSection } from "@/components/site/menu-section";
 import { About, Reviews, Contact, Footer } from "@/components/site/sections";
+import { Cursor } from "@/components/site/cursor";
+import { Loader } from "@/components/site/loader";
 import { useLenis } from "@/hooks/use-lenis";
 
 export const Route = createFileRoute("/")({
@@ -59,6 +61,8 @@ function Index() {
 
   return (
     <div className="bg-background">
+      <Loader />
+      <Cursor />
       <Nav />
       <main>
         <Hero />
